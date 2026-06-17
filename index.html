@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../demo/fafa/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="namediv"><img src="img/a.svg" alt="" width="20px">Weather App</div>
+
+        <div class="searchdiv">
+
+            <input type="text" id="city" placeholder="Enter your city name">
+
+
+            <input type="submit" value="submit" id="btn">
+
+
+        </div>
+
+
+
+        <div class="row">
+            
+
+
+            <div class="row_col_left">
+                <div class="city_name_cont_left">
+                    <div class="city_name_item">
+
+                        <h1 style="margin-bottom:10px;">New Delhi , India</h1>
+
+                        <p>Monday, 27 May 2026 | 02:20 pm</p>
+
+                    </div>
+                    <div class="icon_temp_cont">
+
+                        <div class="icon_item">
+                            <img src="img/a.svg" width="100px" alt="">
+                        </div>
+                        <div class="temp_item">
+                            <h1>32</h1><span>&deg;C</span>
+                            
+                            
+                            
+                        </div>
+                        
+                    </div>
+                    <p style="text-align: center; margin-left: 100px; font-size: x-large; font-family: sans-serif;">Condition</p>
+                    
+                    
+                    
+                </div>
+                <div class="current_weather_list_cont_right">
+                 
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-tint"  ></i><p>Humedity </p></div>
+                        <div><p>50 %</p></div>
+                    </div>
+                    
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-wind" ></i><p>Wind Speed</p></div>
+                        <div><p>50 km/h</p></div>
+                    </div>
+                    
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-wind" ></i><p>Wind direction</p></div>
+                        <div><p>50 hPa</p></div>
+                    </div>
+                    
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-eye"  ></i><p>Visiblity</p></div>
+                        <div><p>50 km</p></div>
+                    </div>
+                    
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-sun" id="sun"  ></i><p>UV </p></div>
+                        <div><p>50 (High)</p></div>
+                    </div>
+                    
+                    <div class="list_items">
+                        <div class="list_items_icon"><i class="fa fa-umbrella-beach" id="sun"  ></i><p>Rain Quntity</p></div>
+                        <div><p>50 mm</p></div>
+                    </div>
+                    
+                    
+ 
+                    
+                        
+                    
+
+
+                </div>
+
+
+            </div>
+
+            <div class="row_col_right">
+                <div><h2> Current Conditions </h2></div>
+                <hr>
+                <div class="Conditions_row">
+                    <div class="Conditions_col_left">
+                        <div class="Conditions_icon_item">
+                            <i class="fa fa-temperature-high" size="40px" id="tt"  ></i>
+                        </div>
+                        <div class="Conditions_name_value_item">
+
+                            <div class="Conditions_name_item">Temperature</div>
+                            <div class="Conditions_value_item"><h1>32&deg;C</h1></div>
+                        </div>
+                    </div>
+                    <div class="Conditions_col_left">
+                        <div class="Conditions_icon_item">
+                            <i class="fa fa-temperature-high" size="40px" id="tf"  ></i>
+                        </div>
+                        <div class="Conditions_name_value_item">
+
+                            <div class="Conditions_name_item">Feels Like</div>
+                            <div class="Conditions_value_item"><h1>32&deg;C</h1></div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="Conditions_row">
+                    <div class="Conditions_col_left">
+                        <div class="Conditions_icon_item">
+                            <i class="fa fa-cloud" size="40px" id="cc"  ></i>
+                        </div>
+                        <div class="Conditions_name_value_item">
+
+                            <div class="Conditions_name_item">Cloud Cover</div>
+                            <div class="Conditions_value_item"><h1>32%</h1></div>
+                        </div>
+                    </div>
+                    <div class="Conditions_col_left">
+                        <div class="Conditions_icon_item">
+                            <i class="fa fa-cloud-rain" size="40px" id="cc"  ></i>
+                        </div>
+                        <div class="Conditions_name_value_item">
+
+                            <div class="Conditions_name_item"></i>Rain Chance</div>
+                            <div class="Conditions_value_item"><h1>32%</h1></div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                
+            </div> 
+
+
+
+
+        </div>
+
+        <div class="row_2">
+            <div class="hour_item">
+                <h3>2:30 PM</h3>
+                <img src="img/a.svg" width="100px" alt="">
+                <p>condition</p>
+                <div class="temp_wond_item_hour">
+                    <div class=""><i class="fa fa-temperature-high" size="40px" style="color: red;" ></i>23&deg;C</div>
+                    <div class=""><i class="fa fa-temperature-high" size="40px"  style="color: rgba(15, 224, 43, 0.548);" ></i>30&deg;C</div>
+
+
+                </div>
+                <p><i class="fa fa-umbrella" id="sun"  ></i> Rain Chance 30%</p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js">
+
+    </script>
+</body>
+
+</html>

@@ -3,6 +3,7 @@ const apikey = "eb3975fc0f294974b08101527261406";
 
 const btn = document.getElementById("btn");
 const row = document.getElementsByClassName("row")[0];
+const row_2 = document.getElementsByClassName("row_2")[0];
 // const box = document.getElementById("box");
 // const fora = document.getElementById("for");
 
@@ -24,34 +25,34 @@ btn.addEventListener("click", async () => {
 
 
         const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city},india&days=3`);
-        
-        const Data = await response.json();
-         const date = new Date(Data.location.localtime);
-        
-         const dayname = date.toLocaleDateString("en-us",{
-            weekday:"long",
-         });
-         
-         const daynum = date.getDate();
-         
-         const month = date.toLocaleDateString("en-us",{
-            month:"long",
-        });
-        
-        const year = date.getFullYear();
-        
-        const time = date.toLocaleTimeString("en-us",{
-           hour:"2-digit",
-           minute:"2-digit",
-           hour12: true,
-       });
 
-       const time_date = `${dayname}, ${daynum} ${month} ${year} | ${time}  `
+        const Data = await response.json();
+        const date = new Date(Data.location.localtime);
+
+        const dayname = date.toLocaleDateString("en-us", {
+            weekday: "long",
+        });
+
+        const daynum = date.getDate();
+
+        const month = date.toLocaleDateString("en-us", {
+            month: "long",
+        });
+
+        const year = date.getFullYear();
+
+        const time = date.toLocaleTimeString("en-us", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        });
+
+        const time_date = `${dayname}, ${daynum} ${month} ${year} | ${time}  `
 
         console.log(Data);
-        console.log("rrr"+row);
-        
-         row.innerHTML =`
+        console.log("rrr" + row);
+
+        row.innerHTML = `
          
          
 
@@ -214,39 +215,69 @@ btn.addEventListener("click", async () => {
         // <p>Rain:${Data.current.precip_mm} mm</p>
         // <p>Wind Speed:${Data.current.wind_kph}km/h</p>
         // <p>Wind direction:${Data.current.wind_dir}km/h</p>
-       
-        
+
+
         // `;
         // const ff = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${apikey}&q=${city},india&days=3`);
         // console.log("rrrrr");
         // const Dataff = await ff.json();
 
-    //     Data.forecast.forecastday.forEach(day => {
-    //         console.log("rr" + day);
-    //         fora.innerHTML += `
+        Data.forecast.forecastday[0].hour.forEach(hour => {
+            
+           const timed = new Date(hour.time);
+           const timet = date.toLocaleTimeString("en-us", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+        });
+
+            row_2.innerHTML += `
         
-    //    <p>Date:${day.date}</p>
-    //    <img src="${day.day.condition.icon}" alt="icon" width="20px" height="20px">
-    //    <p>Temperature max:${day.day.maxtemp_c}^C</p>
-    //    <p>Temperature mini:${day.day.mintemp_c}^C</p>
-    //     <p>Condition:${day.day.condition.text}</p>
-    //     <p>Humidity:${day.day.humidity}%</p>
-    //     <p>Rain:${day.day.daily_chance_of_rain}%</p>
-    //     <p>Rain:${day.day.totalprecip_mm}mm</p>
-    //     <p>Cloud:${day.day.cloud}mm</p>
-    //     <p>Wind Speed:${day.day.wind_kph}km/h</p>
-    //     <p>Wind direction:${day.day.wind_dir}km/h</p>
+           <div class="hour_item">
+                <h3>${hour.time.split(" ")[1]}</h3>
+                <img src="https:${hour.condition.icon}" width="100px" alt="">
+                <p>${hour.condition.text}</p>
+                <div class="temp_wond_item_hour">
+                    <div class=""><i class="fa fa-temperature-high" size="40px" style="color: red;" ></i>${hour.temp_c}&deg;C</div>
+                    <div class=""><i class="fa fa-wind" size="40px"  style="color: rgba(15, 224, 43, 0.548);" ></i>${hour.wind_kph}km/h</div>
+
+
+                </div>
+                <p><i class="fa fa-umbrella" id="sun"  ></i> Rain Chance ${hour.chance_of_rain}%</p>
+
+            </div>
+
+
+
        
         
-    //     `;
+        `;});
+            //     Data.forecast.forecastday.forEach(day => {
+            //         console.log("rr" + day);
+            //         fora.innerHTML += `
 
-        // });
-        console.log("sssss");
+            //    <p>Date:${day.date}</p>
+            //    <img src="${day.day.condition.icon}" alt="icon" width="20px" height="20px">
+            //    <p>Temperature max:${day.day.maxtemp_c}^C</p>
+            //    <p>Temperature mini:${day.day.mintemp_c}^C</p>
+            //     <p>Condition:${day.day.condition.text}</p>
+            //     <p>Humidity:${day.day.humidity}%</p>
+            //     <p>Rain:${day.day.daily_chance_of_rain}%</p>
+            //     <p>Rain:${day.day.totalprecip_mm}mm</p>
+            //     <p>Cloud:${day.day.cloud}mm</p>
+            //     <p>Wind Speed:${day.day.wind_kph}km/h</p>
+            //     <p>Wind direction:${day.day.wind_dir}km/h</p>
 
-    } catch (error) {
-        console.log(error);
-        
-        alert("not found");
-    }
 
-});    
+            //     `;
+
+            // });
+            console.log("sssss");
+
+        } catch (error) {
+            console.log(error);
+
+            alert("not found");
+        }
+
+    });    

@@ -16,7 +16,7 @@
     .container{
         
         width: 100vw;
-        height: 100vh;
+        height: auto;
     }
     .namediv{
         
@@ -57,7 +57,7 @@
     .row{
     
         width: 95%;
-        height: 50vh;
+        height: auto;
         padding: 10px;
         margin: 0 auto;        
         margin-top: 40px;        
@@ -69,7 +69,7 @@
 
     .row_col_left{
         width: 55%;
-        height: 100%;
+        height: auto;
         /* background-color: rgb(162, 238, 22); */
         /* border: rgb(182, 182, 182) 1px solid; */
         border-radius: 20px;
@@ -183,19 +183,24 @@
   .row_2{
     box-shadow: 0 0 20px white ;
     width: 95%;
-    height: 300px;
+    height: auto;
     margin: 50px auto;
     border-radius: 20px;
     display: flex;
-    
+    overflow-x:auto ;
     align-items: center;
-    overflow-wrap: break-word;
+    
+    
   }
+
+  .row_2::-webkit-scrollbar{
+   
+}
 
   .hour_item{
 
-    width: 200px;
-    height: 250px;
+    width: 300px;
+    height: auto;
     border: 1px solid white;
     box-shadow: 0 0 20px white ;
     border-radius: 20px;
@@ -205,6 +210,7 @@
     align-items: center;
     gap: 8px;
     padding: 10px;
+    
   }
 
   .temp_wond_item_hour{
@@ -241,5 +247,65 @@
 
     color: rgb(236, 212, 0);
     /* font-size: 40px; */
+    
+  }
+
+  @media (max-width:1150px) {
+  .row{
+
+    flex-direction: column;
+    align-items: center;
+
+  }
+
+  .row_col_left , .row_col_right{
+
+    width:100%;
+    margin: 20px;
+  }
+
+  .Conditions_col_left{
+
+    justify-content: center;
+    align-items: center;
+    
+  }
+    
+  }
+
+  @media (max-width:650px) {
+  /* .row{
+
+    flex-direction: column;
+    align-items: center;
+
+  } */
+
+  .row_col_left , .row_col_right{
+
+    /* width:100%; */
+    margin: 20px;
+flex-direction: column;
+    align-items: center;
+
+  }
+
+  .city_name_cont_left ,.current_weather_list_cont_right{
+
+   width:100%;
+    margin: 20px;
+flex-direction: column;
+    align-items: center;
+
+
+  }
+
+  .Conditions_col_left{
+
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+  }
     
   }

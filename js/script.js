@@ -4,6 +4,7 @@ const apikey = "eb3975fc0f294974b08101527261406";
 const btn = document.getElementById("btn");
 const row = document.getElementsByClassName("row")[0];
 const row_2 = document.getElementsByClassName("row_2")[0];
+const row_3 = document.getElementsByClassName("row_3")[0];
 // const box = document.getElementById("box");
 // const fora = document.getElementById("for");
 
@@ -14,7 +15,7 @@ btn.addEventListener("click", async () => {
 
 
 
-    const city = document.getElementById("city").value;
+    const city = document.getElementById("city_input").value;
     if (!city) {
         city.innerHTML = "Enter City Name";
         return;
@@ -223,13 +224,8 @@ btn.addEventListener("click", async () => {
         // const Dataff = await ff.json();
 
         Data.forecast.forecastday[0].hour.forEach(hour => {
-            
-           const timed = new Date(hour.time);
-           const timet = date.toLocaleTimeString("en-us", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: true,
-        });
+
+
 
             row_2.innerHTML += `
         
@@ -243,41 +239,65 @@ btn.addEventListener("click", async () => {
 
 
                 </div>
-                <p><i class="fa fa-umbrella" id="sun"  ></i> Rain Chance ${hour.chance_of_rain}%</p>
+                <p><i class="fa fa-umbrella" id="sun"  ></i> Rain Ch ${hour.chance_of_rain}%</p>
+                     <p><i class="fa fa-water" id="sun"  style="color: rgba(4, 0, 255, 0.548);"  ></i> Rain Qty ${hour.precip_mm}mm</p>
+            </div>
+           `;
+        });
 
+
+
+        Data.forecast.forecastday.slice(1).forEach(day => {
+        const date = new Date(day.date);
+
+        const weekday = date.toLocaleDateString("en-us", {
+            weekday: "long",
+        });
+
+        const daynum = date.getDate();
+
+        const month = date.toLocaleDateString("en-us", {
+            month: "long",
+        });
+            const namr_day = `${weekday}, ${daynum} ${month}`;
+            row_3.innerHTML += `
+
+                    <div class="card">
+                <h3>${namr_day}</h3>
+                <img src="https:${day.day.condition.icon}" width="100px" alt="">
+                <p>${day.day.condition.text}</p>
+                <div class="temp_wond_item_hour">
+                    <div class=""><i class="fa fa-temperature-high" size="40px" style="color: red;" ></i>${day.day.maxtemp_c}&deg;C</div>
+                    <div class=""><i class="fa fa-wind" size="40px"  style="color: rgba(15, 224, 43, 0.548);" ></i>${day.day.maxwind_kph}km/h</div>
+
+
+                    <p><i class="fa fa-umbrella" id="sun"  ></i>${day.day.daily_chance_of_rain}%</p>
+                    <p><i class="fa fa-water" id="sun"  style="color: rgba(4, 0, 255, 0.548);"  ></i> ${day.day.totalprecip_mm}mm</p>
+                </div>
             </div>
 
+                `;
+
+        });
+        //    <p>Date:${day.date}</p>
+        //    <img src="${day.day.condition.icon}" alt="icon" width="20px" height="20px">
+        //    <p>Temperature max:${day.day.maxtemp_c}^C</p>
+        //    <p>Temperature mini:${day.day.mintemp_c}^C</p>
+        //     <p>Condition:${day.day.condition.text}</p>
+        //     <p>Humidity:${day.day.humidity}%</p>
+        //     <p>Rain:${day.day.daily_chance_of_rain}%</p>
+        //     <p>Rain:${day.day.totalprecip_mm}mm</p>
+        //     <p>Cloud:${day.day.cloud}mm</p>
+        //     <p>Wind Speed:${day.day.wind_kph}km/h</p>
+        //     <p>Wind direction:${day.day.wind_dir}km/h</p>
 
 
-       
-        
-        `;});
-            //     Data.forecast.forecastday.forEach(day => {
-            //         console.log("rr" + day);
-            //         fora.innerHTML += `
+        console.log("sssss");
 
-            //    <p>Date:${day.date}</p>
-            //    <img src="${day.day.condition.icon}" alt="icon" width="20px" height="20px">
-            //    <p>Temperature max:${day.day.maxtemp_c}^C</p>
-            //    <p>Temperature mini:${day.day.mintemp_c}^C</p>
-            //     <p>Condition:${day.day.condition.text}</p>
-            //     <p>Humidity:${day.day.humidity}%</p>
-            //     <p>Rain:${day.day.daily_chance_of_rain}%</p>
-            //     <p>Rain:${day.day.totalprecip_mm}mm</p>
-            //     <p>Cloud:${day.day.cloud}mm</p>
-            //     <p>Wind Speed:${day.day.wind_kph}km/h</p>
-            //     <p>Wind direction:${day.day.wind_dir}km/h</p>
+    } catch (error) {
+        console.log(error);
 
+        alert("not found");
+    }
 
-            //     `;
-
-            // });
-            console.log("sssss");
-
-        } catch (error) {
-            console.log(error);
-
-            alert("not found");
-        }
-
-    });    
+});    
